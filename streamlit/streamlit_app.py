@@ -1,8 +1,8 @@
+import requests
+
 import streamlit as st
 
-from gemini import generate_content
-
-st.title("Echo Bot")
+st.title("Gemini Bot")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -18,14 +18,12 @@ if prompt := st.chat_input("How can I assist you today? 😊"):
 
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
-        full_response = ""
-
-        # Stream Gemini's response
-        for chunk in generate_content(st.session_state.messages):
-            if chunk.text:  # check not None
-                full_response += chunk.text
-                message_placeholder.markdown(full_response + "▌")  # Cursor effect
-                
+        # Call the FastAPI endpoint
+        response = requests.post(
+            "http://backend:8000/query", json={"messages": st.session_state.messages}
+        )
+        data = response.json()
+        full_response = data.get("response", "")
         message_placeholder.markdown(full_response)
 
     st.session_state.messages.append({"role": "assistant", "content": full_response})
