@@ -24,7 +24,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div align="center">
-  <img src="images/Sample.png" alt="Screenshot" width="1500" height="600">
+  <img src="images/Sample.png" alt="Screenshot" width="1800" height="600">
 </div>
 
 This project is an LLM-based Chatbot designed to provide intelligent, conversational experiences. It integrates a FastAPI backend with a Streamlit frontend, all containerized using Docker, to deliver a seamless chat interface.
