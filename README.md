@@ -63,7 +63,7 @@ Ensure you have the following installed:
 
 1. **Clone the Repository:**
     ```sh
-    git clone https://github.com/YourUsername/LLM-Based-Chatbot.git
+    git clone https://github.com/MrSa3dola/LLM-Based-Chatbot.git
     ```
     ```sh
     cd ./LLM-Based-Chatbot/
