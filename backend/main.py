@@ -27,14 +27,8 @@ async def query(request: QueryRequest):
     # Convert Pydantic objects into simple dicts.
     messages = [{"role": msg.role, "content": msg.content} for msg in request.messages]
 
-    # Initialize an empty response string.
-    full_response = ""
-
-    # Call generate_content (which streams responses)
-    # Note: If generate_content is blocking, consider offloading this work with FastAPI's run_in_threadpool.
-    for chunk in generate_content(messages):
-        if chunk.text:
-            full_response += chunk.text
+    # Call generate_content with the new API (returns text directly)
+    response_text = generate_content(messages)
 
     # Return the complete response as JSON.
-    return {"response": full_response}
+    return {"response": response_text}

@@ -19,13 +19,13 @@
 version: "3.8"
 services:
   backend:
-    build: ddadadadaddada/llm-based-chatbot-backend:latest
+    build: ./backend
     ports:
       - "8000:8000"
     env_file:
       - .env
   streamlit:
-    build: ddadadadaddada/llm-based-chatbot-streamlit:latest
+    build: ./streamlit
     ports:
       - "8501:8501"
     env_file:
